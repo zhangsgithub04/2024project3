@@ -2,12 +2,14 @@
 
 endPoint = 'http://localhost:3007';
 
+const customHeaders = {
+    "Content-Type": "application/json",
+}
+
+
 function insert(doc) {
 
-    const customHeaders = {
-        "Content-Type": "application/json",
-    }
-
+    
     fetch(endPoint, {
         method: "POST",
         headers: customHeaders,
@@ -19,12 +21,22 @@ function insert(doc) {
         });
 }
 
-function getAll(doc) {
+function deleteById(id)
+{
+    fetch('https://api.example.com/data')
+  
+    fetch(endPoint+'/'+id, {
+        method: "DELETE",
+        headers: customHeaders,
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+  
 
-    const customHeaders = {
-        "Content-Type": "application/json",
-    }
+}
 
+function getAll() {
     fetch(endPoint, {
         method: "GET",
         headers: customHeaders,
@@ -44,4 +56,6 @@ getAll();
 doc = { "name": "tester", "course": "troom", "roll_no": "111" }
 insert(doc);
 
+id="66412ed093c2134a40c10292";
+deleteById(id);
 
